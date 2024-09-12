@@ -3,7 +3,7 @@
 /* styles.css */
 .chintu-carousel-container {
   overflow: hidden;
-  padding-right:20px;
+  padding-right: 20px;
 }
 
 .chintu-header {
@@ -17,7 +17,7 @@
   margin: 0;
 }
 
-.chintu-header h2 a{
+.chintu-header h2 a {
   font-size: 32px;
 }
 
@@ -27,10 +27,10 @@
   align-items: center;
 }
 
-a.chintu-see-more{
+a.chintu-see-more {
   margin-right: 10px;
   font-size: 16px;
-  color:#62A0E6;
+  color: #62a0e6;
 }
 
 .swiper-container {
@@ -75,8 +75,8 @@ a.chintu-see-more{
   width: 28px;
   height: 28px;
   border-radius: 5px;
-  background: #FFFFFF;
-  border: 1px solid #FE5F3D;
+  background: #ffffff;
+  border: 1px solid #fe5f3d;
   opacity: 1; /* Set opacity to visible */
   display: flex;
   align-items: center;
@@ -85,13 +85,12 @@ a.chintu-see-more{
 }
 
 .chintu-nav-buttons button i {
-  color: #FE5F3D; /* Arrow icon color */
+  color: #fe5f3d; /* Arrow icon color */
 }
 
 .chintu-nav-buttons button:hover {
   opacity: 0.8; /* Optional hover effect */
 }
-
 
 /* General Styles for Vertical and Horizontal Menus */
 /* General Styles for Vertical and Horizontal Menus */
@@ -110,7 +109,6 @@ a.chintu-see-more{
 .category-list.horizontal-menu {
   display: flex;
   flex-wrap: wrap;
-
 }
 
 /* Vertical layout without grid: use default block layout */
@@ -215,7 +213,7 @@ a.chintu-see-more{
 .search-box button i {
   width: 15px;
   height: 15px;
-  color: #2A2A2A;
+  color: #2a2a2a;
   font-weight: bold;
 }
 
@@ -224,3 +222,53 @@ a.chintu-see-more{
   color: #000;
 }
 
+/* Banner Slider CSS */
+/* Chintu Banner Slider Styles */
+#chintu-banner-slider {
+  width: 100%;
+  height: 100%;
+}
+
+.chintu-banner-slider .swiper-slide {
+  background-position: center;
+  background-size: cover;
+  position: relative;
+  max-width: 100%;
+}
+
+.chintu-banner-text {
+  position: absolute;
+  bottom: 20%;
+  left: 10%;
+  color: #fff;
+  font-size: 36px;
+  font-weight: bold;
+  z-index: 10;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+}
+
+.chintu-banner-buttons {
+  position: absolute;
+  bottom: 10%;
+  left: 10%;
+  z-index: 10;
+}
+
+.chintu-banner-button {
+  background-color: #ff5733;
+  color: #fff;
+  padding: 10px 20px;
+  font-size: 18px;
+  text-decoration: none;
+  border-radius: 5px;
+  margin-right: 10px;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.chintu-banner-button:hover {
+  background-color: #ff7844;
+}
+
+.swiper-pagination-bullet-active {
+  background-color: #ff5733 !important;
+}

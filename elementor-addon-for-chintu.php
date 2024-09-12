@@ -16,9 +16,11 @@ function register_chintu_widget( $widgets_manager ) {
 
     require_once __DIR__ . '/widgets/elementor-category-list-widget.php';
     require_once __DIR__ . '/widgets/category-carousel-widget.php';
+    require_once __DIR__ . '/widgets/elementor-banner-slider-widget.php';
 
     $widgets_manager->register( new \Elementor_Category_List_Widget() );
     $widgets_manager->register( new \Elementor_Category_Carousel_Widget() );
+    $widgets_manager->register( new \Elementor_Banner_Slider_Widget() );
 
 }
 add_action( 'elementor/widgets/register', 'register_chintu_widget' );

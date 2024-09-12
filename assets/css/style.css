@@ -1,0 +1,226 @@
+/* Add this to your theme's stylesheet or enqueue it in Elementor */
+
+/* styles.css */
+.chintu-carousel-container {
+  overflow: hidden;
+  padding-right:20px;
+}
+
+.chintu-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.chintu-header h2 {
+  margin: 0;
+}
+
+.chintu-header h2 a{
+  font-size: 32px;
+}
+
+.chintu-header-right {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+a.chintu-see-more{
+  margin-right: 10px;
+  font-size: 16px;
+  color:#62A0E6;
+}
+
+.swiper-container {
+  width: 100%;
+  height: 472px;
+}
+
+.swiper-slide {
+  display: flex;
+  max-width: 50%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+  border: none; /* Remove border */
+  box-sizing: border-box;
+  column-gap: 10px;
+}
+
+.swiper-slide img {
+  width: 100%;
+  max-width: 150px;
+  aspect-ratio: 1 / 2.35;
+  object-fit: cover;
+  margin-bottom: 10px;
+  height: auto;
+  max-height: 170px;
+  border-radius: 10px !important;
+}
+
+.swiper-slide h3 {
+  font-size: 18px;
+  margin: 0;
+}
+
+.chintu-nav-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.chintu-nav-buttons button {
+  width: 28px;
+  height: 28px;
+  border-radius: 5px;
+  background: #FFFFFF;
+  border: 1px solid #FE5F3D;
+  opacity: 1; /* Set opacity to visible */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.chintu-nav-buttons button i {
+  color: #FE5F3D; /* Arrow icon color */
+}
+
+.chintu-nav-buttons button:hover {
+  opacity: 0.8; /* Optional hover effect */
+}
+
+
+/* General Styles for Vertical and Horizontal Menus */
+/* General Styles for Vertical and Horizontal Menus */
+.category-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* When grid system is enabled: use CSS Grid */
+.category-list.grid {
+  display: grid;
+}
+
+/* Horizontal layout without grid: use Flexbox */
+.category-list.horizontal-menu {
+  display: flex;
+  flex-wrap: wrap;
+
+}
+
+/* Vertical layout without grid: use default block layout */
+.category-list.vertical-menu li {
+  display: block;
+  margin: 10px 0;
+}
+
+/* Styling individual categories */
+.category-list li {
+  border: 1px solid transparent;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.category-list li a {
+  text-decoration: none;
+  color: #333;
+  transition: color 0.3s ease;
+}
+
+/* Border Shape Options */
+.category-list.normal-border li {
+  border-radius: 0;
+}
+
+.category-list.rounded-border li {
+  border-radius: 100px;
+  overflow: hidden;
+}
+
+.category-image {
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 8px;
+}
+
+.category-list.horizontal-menu .category-image {
+  margin-right: 10px;
+}
+
+/*Search box*/
+
+.category-search-wrapper {
+  display: flex;
+  justify-content: space-between; /* Keeps category list on the left and search box on the right */
+  align-items: center; /* Vertically centers the content */
+  gap: 20px; /* Adds spacing between the category list and the search box */
+}
+
+.search-box {
+  display: flex;
+  justify-content: flex-end; /* Align the search box to the right */
+  align-items: center; /* Vertically center the search box */
+  margin-left: auto; /* Ensures the search box moves to the right side */
+}
+
+.search-box form {
+  position: relative;
+  width: 100%;
+  max-width: 192px;
+}
+
+.search-box input[type="search"] {
+  width: 192px;
+  height: 46px;
+  padding: 14px 20px 14px 20px;
+  border: 1px solid #626262;
+  border-radius: 50px;
+  font-size: 16px;
+  outline: none;
+  color: #000;
+  /* Disable the clear (X) button in WebKit browsers */
+  -webkit-appearance: none; /* For Chrome, Safari, and Opera */
+  -moz-appearance: textfield; /* For Firefox to disable spinner in search inputs */
+}
+
+.search-box input[type="search"]::-webkit-search-cancel-button {
+  -webkit-appearance: none; /* Hides the X button in WebKit browsers */
+}
+/* Placeholder text color */
+.search-box input[type="search"]::placeholder {
+  color: #999; /* Set the placeholder text color */
+  opacity: 1; /* Ensure opacity is set to fully visible */
+}
+
+.search-box button {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  border: none;
+  background: none;
+  cursor: pointer;
+  background: transparent !important;
+}
+
+.search-box button:hover {
+  background-color: transparent !important;
+  border-radius: 0 50px 50px 0;
+}
+
+.search-box button i {
+  width: 15px;
+  height: 15px;
+  color: #2A2A2A;
+  font-weight: bold;
+}
+
+.search-box input[type="search"]:focus {
+  border-color: #0073e6;
+  color: #000;
+}
+

@@ -108,11 +108,11 @@ class Elementor_Category_Carousel_Widget extends \Elementor\Widget_Base {
                         <div class="chintu-nav-buttons">
                             <!-- Left Arrow Icon -->
                             <button class="chintu-prev-button-<?php echo esc_attr( $widget_id ); ?>">
-                                <i class="eicon-chevron-left"></i>
+                                <i class="fa-solid fa-chevron-left"></i>
                             </button>
                             <!-- Right Arrow Icon -->
                             <button class="chintu-next-button-<?php echo esc_attr( $widget_id ); ?>">
-                                <i class="eicon-chevron-right"></i>
+                                <i class="fa-solid fa-chevron-right"></i>
                             </button>
                         </div>
                     </div>
@@ -122,9 +122,14 @@ class Elementor_Category_Carousel_Widget extends \Elementor\Widget_Base {
                         <?php while ( $query->have_posts() ): $query->the_post();?>
                             <div class="swiper-slide">
                                 <a href="<?php the_permalink(); ?>">
-                                    <img src="<?php echo get_the_post_thumbnail_url( get_the_ID(), 'full' ); ?>" alt="<?php the_title();?>" />
+                                    <?php if ( has_post_thumbnail() ) : ?>
+                                        <img src="<?php echo esc_url( get_the_post_thumbnail_url( get_the_ID(), 'full' ) ); ?>" alt="<?php echo esc_attr( get_the_title() ); ?>" />
+                                    <?php else : ?>
+                                        <!-- Fallback image if the post does not have a thumbnail -->
+                                        <img src="<?php echo esc_url( get_stylesheet_directory_uri() . '/assets/img/default-image.jpg' ); ?>" alt="<?php echo esc_attr( get_the_title() ); ?>" />
+                                    <?php endif; ?>
                                 </a>
-                                <h3><a href="<?php the_permalink(); ?>"><?php the_title();?></a></h3>
+                                <h3><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
                             </div>
                         <?php endwhile;?>
                     </div>
@@ -142,6 +147,24 @@ class Elementor_Category_Carousel_Widget extends \Elementor\Widget_Base {
                         navigation: {
                             nextEl: '.chintu-next-button-<?php echo esc_js( $widget_id ); ?>',
                             prevEl: '.chintu-prev-button-<?php echo esc_js( $widget_id ); ?>',
+                        },
+                        breakpoints: {
+                            768: {
+                                slidesPerView: 2, // For tablet and larger devices
+                                slidesPerGroup: 1,
+                                grid: {
+                                    rows: 2
+                                },
+                                spaceBetween: 25,
+                            },
+                            0: {
+                                slidesPerView: 1, // For small devices
+                                slidesPerGroup: 1,
+                                grid: {
+                                    rows: 2 // One column with two rows
+                                },
+                                spaceBetween: 10,
+                            }
                         },
                     });
                 });

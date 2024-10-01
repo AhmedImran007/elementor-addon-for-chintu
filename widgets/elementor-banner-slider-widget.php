@@ -53,41 +53,149 @@ class Elementor_Banner_Slider_Widget extends \Elementor\Widget_Base {
             ]
         );
 
-        // Button repeater for multiple buttons inside each slide
-        $button_repeater = new \Elementor\Repeater();
-
-        // Button text
-        $button_repeater->add_control(
-            'button_text',
+        // Text Input Fields (Top of the Banner)
+        $repeater->add_control(
+            'top_text_1',
             [
-                'label'   => esc_html__( 'Button Text', 'elementor-addon' ),
+                'label'   => esc_html__( 'Top Text 1', 'elementor-addon' ),
                 'type'    => \Elementor\Controls_Manager::TEXT,
-                'default' => esc_html__( 'Click Here', 'elementor-addon' ),
+                'default' => esc_html__( 'Top Text 1', 'elementor-addon' ),
             ]
         );
 
-        // Button link
-        $button_repeater->add_control(
-            'button_link',
+        $repeater->add_control(
+            'top_text_2',
             [
-                'label'       => esc_html__( 'Button Link', 'elementor-addon' ),
+                'label'   => esc_html__( 'Top Text 2', 'elementor-addon' ),
+                'type'    => \Elementor\Controls_Manager::TEXT,
+                'default' => esc_html__( 'Top Text 2', 'elementor-addon' ),
+            ]
+        );
+
+        $repeater->add_control(
+            'top_text_3',
+            [
+                'label'   => esc_html__( 'Top Text 3', 'elementor-addon' ),
+                'type'    => \Elementor\Controls_Manager::TEXT,
+                'default' => esc_html__( 'Top Text 3', 'elementor-addon' ),
+            ]
+        );
+
+        // Button Heading Text (Bottom of the Banner)
+        $repeater->add_control(
+            'button_heading_text',
+            [
+                'label'   => esc_html__( 'Button Heading Text', 'elementor-addon' ),
+                'type'    => \Elementor\Controls_Manager::TEXT,
+                'default' => esc_html__( 'Button Heading', 'elementor-addon' ),
+            ]
+        );
+
+        // Button 1 (First Button) Controls
+        $repeater->add_control(
+            'button_1_enabled',
+            [
+                'label'        => esc_html__( 'Enable First Button', 'elementor-addon' ),
+                'type'         => \Elementor\Controls_Manager::SWITCHER,
+                'label_on'     => esc_html__( 'Yes', 'elementor-addon' ),
+                'label_off'    => esc_html__( 'No', 'elementor-addon' ),
+                'return_value' => 'yes',
+                'default'      => 'yes',
+            ]
+        );
+
+        // Button 1 Text
+        $repeater->add_control(
+            'button_1_text',
+            [
+                'label'     => esc_html__( 'First Button Text', 'elementor-addon' ),
+                'type'      => \Elementor\Controls_Manager::TEXT,
+                'default'   => esc_html__( 'Click Here', 'elementor-addon' ),
+                'condition' => [
+                    'button_1_enabled' => 'yes',
+                ],
+            ]
+        );
+
+        // Button 1 Image
+        $repeater->add_control(
+            'button_1_image',
+            [
+                'label'     => esc_html__( 'First Button Image', 'elementor-addon' ),
+                'type'      => \Elementor\Controls_Manager::MEDIA,
+                'condition' => [
+                    'button_1_enabled' => 'yes',
+                ],
+            ]
+        );
+
+        // Button 1 Link
+        $repeater->add_control(
+            'button_1_link',
+            [
+                'label'       => esc_html__( 'First Button Link', 'elementor-addon' ),
                 'type'        => \Elementor\Controls_Manager::URL,
                 'placeholder' => esc_html__( 'https://your-link.com', 'elementor-addon' ),
                 'default'     => [
                     'url' => '#',
                 ],
+                'condition' => [
+                    'button_1_enabled' => 'yes',
+                ],
             ]
         );
 
-        // Add button repeater control to each slide (this will not create new slides)
+        // Button 2 (Second Button) Controls
         $repeater->add_control(
-            'buttons',
+            'button_2_enabled',
             [
-                'label'       => esc_html__( 'Buttons', 'elementor-addon' ),
-                'type'        => \Elementor\Controls_Manager::REPEATER,
-                'fields'      => $button_repeater->get_controls(),
-                'default'     => [],
-                'title_field' => '{{{ button_text }}}', // Shows button text in the Elementor editor
+                'label'        => esc_html__( 'Enable Second Button', 'elementor-addon' ),
+                'type'         => \Elementor\Controls_Manager::SWITCHER,
+                'label_on'     => esc_html__( 'Yes', 'elementor-addon' ),
+                'label_off'    => esc_html__( 'No', 'elementor-addon' ),
+                'return_value' => 'yes',
+                'default'      => 'no',
+            ]
+        );
+
+        // Button 2 Text
+        $repeater->add_control(
+            'button_2_text',
+            [
+                'label'     => esc_html__( 'Second Button Text', 'elementor-addon' ),
+                'type'      => \Elementor\Controls_Manager::TEXT,
+                'default'   => esc_html__( 'Learn More', 'elementor-addon' ),
+                'condition' => [
+                    'button_2_enabled' => 'yes',
+                ],
+            ]
+        );
+
+        // Button 2 Image
+        $repeater->add_control(
+            'button_2_image',
+            [
+                'label'     => esc_html__( 'Second Button Image', 'elementor-addon' ),
+                'type'      => \Elementor\Controls_Manager::MEDIA,
+                'condition' => [
+                    'button_2_enabled' => 'yes',
+                ],
+            ]
+        );
+
+        // Button 2 Link
+        $repeater->add_control(
+            'button_2_link',
+            [
+                'label'       => esc_html__( 'Second Button Link', 'elementor-addon' ),
+                'type'        => \Elementor\Controls_Manager::URL,
+                'placeholder' => esc_html__( 'https://your-link.com', 'elementor-addon' ),
+                'default'     => [
+                    'url' => '#',
+                ],
+                'condition' => [
+                    'button_2_enabled' => 'yes',
+                ],
             ]
         );
 
@@ -98,7 +206,7 @@ class Elementor_Banner_Slider_Widget extends \Elementor\Widget_Base {
                 'label'       => esc_html__( 'Slides', 'elementor-addon' ),
                 'type'        => \Elementor\Controls_Manager::REPEATER,
                 'fields'      => $repeater->get_controls(),
-                'title_field' => '{{{ title }}}', // Displays the title of each slide
+                'title_field' => '{{{ title }}}',
             ]
         );
 
@@ -116,14 +224,44 @@ class Elementor_Banner_Slider_Widget extends \Elementor\Widget_Base {
             // Loop through each slide
             foreach ( $settings['slides'] as $slide ) {
                 echo '<div class="swiper-slide" style="background-image: url(' . esc_url( $slide['background_image']['url'] ) . ');">';
+
+                // Display the top three text fields
+                echo '<div class="chintu-top-texts">';
+                echo '<h3>' . esc_html( $slide['top_text_1'] ) . '</h3>';
+                echo '<h3>' . esc_html( $slide['top_text_2'] ) . '</h3>';
+                echo '<h3>' . esc_html( $slide['top_text_3'] ) . '</h3>';
+                echo '</div>';
+
+
                 echo '<div class="chintu-banner-text">' . esc_html( $slide['title'] ) . '</div>';
 
-                // Loop through buttons within the current slide
-                if ( !empty( $slide['buttons'] ) ) {
+                // Display the button heading text (at the bottom)
+                echo '<div class="chintu-button-heading-text">';
+                echo '<h4>' . esc_html( $slide['button_heading_text'] ) . '</h4>';
+                echo '</div>';
+
+                // Render the first button as an image if provided, otherwise as text
+                if ( $slide['button_1_enabled'] === 'yes' || $slide['button_2_enabled'] === 'yes' ) {
                     echo '<div class="chintu-banner-buttons">';
-                    foreach ( $slide['buttons'] as $button ) {
-                        echo '<a href="' . esc_url( $button['button_link']['url'] ) . '" class="chintu-banner-button">' . esc_html( $button['button_text'] ) . '</a>';
+
+                    // First button
+                    if ( $slide['button_1_enabled'] === 'yes' ) {
+                        if ( !empty( $slide['button_1_image']['url'] ) ) {
+                            echo '<a href="' . esc_url( $slide['button_1_link']['url'] ) . '"><img src="' . esc_url( $slide['button_1_image']['url'] ) . '" class="chintu-button-image" alt="' . esc_attr( $slide['title'] ) . '" /></a>';
+                        } else {
+                            echo '<a href="' . esc_url( $slide['button_1_link']['url'] ) . '" class="chintu-banner-button">' . esc_html( $slide['button_1_text'] ) . '</a>';
+                        }
                     }
+
+                    // Second button
+                    if ( $slide['button_2_enabled'] === 'yes' ) {
+                        if ( !empty( $slide['button_2_image']['url'] ) ) {
+                            echo '<a href="' . esc_url( $slide['button_2_link']['url'] ) . '"><img src="' . esc_url( $slide['button_2_image']['url'] ) . '" class="chintu-button-image" alt="' . esc_attr( $slide['title'] ) . '" /></a>';
+                        } else {
+                            echo '<a href="' . esc_url( $slide['button_2_link']['url'] ) . '" class="chintu-banner-button">' . esc_html( $slide['button_2_text'] ) . '</a>';
+                        }
+                    }
+
                     echo '</div>';
                 }
 

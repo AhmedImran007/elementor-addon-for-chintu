@@ -223,7 +223,7 @@ a.chintu-see-more {
 }
 
 /* For small devices: Display 2 categories per row and move the search box below */
-@media (max-width: 768px) {
+@media (max-width: 992px) {
   .category-list {
     display: grid;
     grid-template-columns: repeat(2, 1fr); /* Display 2 categories per row */
@@ -233,13 +233,18 @@ a.chintu-see-more {
   .category-search-wrapper {
     flex-direction: column; /* Stack the category list and search box vertically */
     align-items: stretch; /* Ensure both sections take full width */
+    gap:0;
+  }
+
+  .category-content-wrapper {
+    width: 46%;
+    margin: 2% !important;
   }
 
   .search-box {
-    margin-left: 0;
-    justify-content: center; /* Center the search box */
-    margin-top: 20px; /* Add spacing above the search box */
-    width: 100%; /* Make search box full width */
+    justify-content: center;
+    width: 96%;
+    margin: 2%;
   }
 
   .search-box form {

@@ -336,6 +336,7 @@ img.chintu-button-image {
   border-radius: 5px;
   margin: 10px !important;
 }
+
 .chintu-top-texts {
   position: absolute;
   top: 30%;
@@ -353,7 +354,7 @@ img.chintu-button-image {
   color: #fff;
 }
 
-.chintu-button-heading-text{
+.chintu-button-heading-text {
   position: absolute;
   bottom: 10%;
   left: 10%;
@@ -365,7 +366,7 @@ img.chintu-button-image {
   font-size: 24px;
   text-align: center;
   margin: 15px 0;
-  color: #fff; /* You can customize the color */
+  color: #fff;
   font-weight: bold;
 }
 

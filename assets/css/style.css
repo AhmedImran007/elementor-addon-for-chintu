@@ -350,13 +350,12 @@ img.chintu-button-image {
 .chintu-top-texts h3 {
   font-size: 25px;
   margin: 5px 0;
-  text-align: center;
   color: #fff;
 }
 
 .chintu-button-heading-text {
   position: absolute;
-  bottom: 10%;
+  bottom: 20%;
   left: 10%;
   z-index: 10;
   text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);

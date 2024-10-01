@@ -53,14 +53,40 @@ class Elementor_Banner_Slider_Widget extends \Elementor\Widget_Base {
             ]
         );
 
-        // Top Text Fields
+        // Top Text Fields with Color and Font Size Controls
         for ($i = 1; $i <= 3; $i++) {
+            // Top Text
             $repeater->add_control(
                 "top_text_$i",
                 [
                     'label'   => esc_html__( "Top Text $i", 'elementor-addon' ),
                     'type'    => \Elementor\Controls_Manager::TEXT,
                     'default' => esc_html__( "Top Text $i", 'elementor-addon' ),
+                ]
+            );
+
+            // Top Text Color Control
+            $repeater->add_control(
+                "top_text_{$i}_color",
+                [
+                    'label'     => esc_html__( "Top Text $i Color", 'elementor-addon' ),
+                    'type'      => \Elementor\Controls_Manager::COLOR,
+                    'selectors' => [
+                        "{{WRAPPER}} .chintu-top-texts h3:nth-child($i)" => 'color: {{VALUE}};',
+                    ],
+                ]
+            );
+
+            // Top Text Font Size Control
+            $repeater->add_control(
+                "top_text_{$i}_font_size",
+                [
+                    'label'      => esc_html__( "Top Text $i Font Size (px)", 'elementor-addon' ),
+                    'type'       => \Elementor\Controls_Manager::NUMBER,
+                    'default'    => '25', // Set default font size
+                    'selectors'  => [
+                        "{{WRAPPER}} .chintu-top-texts h3:nth-child($i)" => 'font-size: {{VALUE}}px', // Apply font size with !important
+                    ],
                 ]
             );
         }
@@ -149,8 +175,31 @@ class Elementor_Banner_Slider_Widget extends \Elementor\Widget_Base {
             echo '<div id="' . esc_attr($unique_id) . '" class="swiper-container chintu-banner-slider">';
             echo '<div class="swiper-wrapper">';
 
-            foreach ($settings['slides'] as $slide) {
-                $this->render_slide($slide);
+            foreach ($settings['slides'] as $index => $slide) {
+                $top_text_style_1 = 'font-size: ' . $slide['top_text_1_font_size'] . 'px;';
+                $top_text_style_2 = 'font-size: ' . $slide['top_text_2_font_size'] . 'px;';
+                $top_text_style_3 = 'font-size: ' . $slide['top_text_3_font_size'] . 'px;';
+
+                echo '<div class="swiper-slide" style="background-image: url(' . esc_url($slide['background_image']['url']) . ');">';
+
+                // Top Texts
+                echo '<div class="chintu-top-texts">';
+                echo '<h3 style="' . esc_attr($top_text_style_1) . '">' . esc_html($slide['top_text_1']) . '</h3>';
+                echo '<h3 style="' . esc_attr($top_text_style_2) . '">' . esc_html($slide['top_text_2']) . '</h3>';
+                echo '<h3 style="' . esc_attr($top_text_style_3) . '">' . esc_html($slide['top_text_3']) . '</h3>';
+                echo '</div>';
+
+                // Title and Button Heading
+                echo '<div class="chintu-banner-text">' . esc_html($slide['title']) . '</div>';
+                echo '<div class="chintu-button-heading-text"><h4>' . esc_html($slide['button_heading_text']) . '</h4></div>';
+
+                // Buttons
+                echo '<div class="chintu-banner-buttons">';
+                $this->render_button($slide, 'button_1');
+                $this->render_button($slide, 'button_2');
+                echo '</div>';
+
+                echo '</div>'; // .swiper-slide
             }
 
             echo '</div>'; // .swiper-wrapper

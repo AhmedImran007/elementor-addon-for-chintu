@@ -468,7 +468,7 @@ class Elementor_Category_List_Widget extends \Elementor\Widget_Base {
             echo '<div class="search-box">';
             echo '<form role="search" method="get" action="' . esc_url(home_url('/')) . '">';
             echo '<input type="search" class="search-field" placeholder="' . esc_attr__('', 'elementor-addon-for-chintu') . '" value="' . get_search_query() . '" name="s" />';
-            echo '<button type="submit"><i class="eicon-search"></i></button>';
+            echo '<button type="submit"><i class="fa fa-search"></i></button>';
             echo '</form>';
             echo '</div>';
         }

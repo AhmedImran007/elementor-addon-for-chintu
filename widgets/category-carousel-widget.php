@@ -140,6 +140,7 @@ class Elementor_Category_Carousel_Widget extends \Elementor\Widget_Base {
                     const swiper_<?php echo esc_js( $widget_id ); ?> = new Swiper('#swiper-container-<?php echo esc_js( $widget_id ); ?>', {
                         slidesPerView: 2,
                         slidesPerGroup: 1,
+                        loop:true,
                         grid: {
                             rows: 2
                         },

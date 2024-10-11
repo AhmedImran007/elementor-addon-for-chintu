@@ -260,7 +260,7 @@ class Elementor_Category_List_Widget extends \Elementor\Widget_Base {
                 'type' => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', '%', 'em'],
                 'selectors' => [
-                    '{{WRAPPER}} .category-list li' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .category-list li a' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -431,31 +431,36 @@ class Elementor_Category_List_Widget extends \Elementor\Widget_Base {
 
                 // Handle image rendering if enabled
                 if (isset($item['enable_image']) && $item['enable_image'] === 'yes' && isset($item['image']['url']) && !empty($item['image']['url'])) {
-                    $image_html = '<a href="' . esc_url($category_link) . '"><img src="' . esc_url($item['image']['url']) . '" class="category-image" alt="' . esc_attr($category_name) . '"></a>';
+                    $image_html = '<img src="' . esc_url($item['image']['url']) . '" class="category-image" alt="' . esc_attr($category_name) . '">';
                 }
 
                 echo '<div class="category-content-wrapper">';
+                // Wrap the entire <li> content with an <a> tag
                 echo '<li class="category-item-' . esc_attr($item['category_id']) . '" style="' . $bg_color . $border_color . '">';
+                echo '<a href="' . esc_url($category_link) . '" style="display: block; ' . $font_color . '">'; // Make the link a block element to cover the whole <li>
+
+                // Display the content based on the image position
                 switch ($image_position) {
                     case 'top':
-                        echo $image_html . '<br><a href="' . esc_url($category_link) . '" style="' . $font_color . '">' . esc_html($category_name) . '</a>';
+                        echo $image_html . '<br>' . esc_html($category_name);
                         break;
                     case 'bottom':
-                        echo '<a href="' . esc_url($category_link) . '" style="' . $font_color . '">' . esc_html($category_name) . '</a><br>' . $image_html;
+                        echo esc_html($category_name) . '<br>' . $image_html;
                         break;
                     case 'left':
-                        echo $image_html . '<a href="' . esc_url($category_link) . '" style="' . $font_color . '">' . esc_html($category_name) . '</a>';
+                        echo $image_html . esc_html($category_name);
                         break;
                     case 'right':
-                        echo '<a href="' . esc_url($category_link) . '" style="' . $font_color . '">' . esc_html($category_name) . '</a>' . $image_html;
+                        echo esc_html($category_name) . $image_html;
                         break;
                     default:
-                        echo '<a href="' . esc_url($category_link) . '" style="' . $font_color . '">' . esc_html($category_name) . '</a>';
+                        echo esc_html($category_name);
                         break;
                 }
 
-                echo '</div>';
+                echo '</a>'; // Close the <a> tag
                 echo '</li>';
+                echo '</div>';
             }
 
             echo '</ul>';

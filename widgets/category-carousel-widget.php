@@ -64,6 +64,20 @@ class Elementor_Category_Carousel_Widget extends \Elementor\Widget_Base {
             ]
         );
 
+        // Exclude child categories control
+        $this->add_control(
+            'exclude_child_categories',
+            [
+                'label'       => esc_html__( 'Exclude Child Categories', 'chintu' ),
+                'type'        => \Elementor\Controls_Manager::SELECT2,
+                'multiple'    => true,
+                'label_block' => true,
+                'options'     => $this->get_child_categories(),
+                'default'     => [],
+                'description' => esc_html__( 'Select child categories to exclude posts from.', 'chintu' ),
+            ]
+        );
+
         $this->end_controls_section();
     }
 
@@ -77,12 +91,25 @@ class Elementor_Category_Carousel_Widget extends \Elementor\Widget_Base {
         return $options;
     }
 
+// Get child categories dynamically
+    private function get_child_categories() {
+        $categories = get_categories();
+        $options = [];
+        foreach ( $categories as $category ) {
+            if ( $category->parent != 0 ) { // Only include child categories
+                $options[$category->term_id] = $category->name;
+            }
+        }
+        return $options;
+    }
+
     // Render widget output
     protected function render() {
         $settings = $this->get_settings_for_display();
         $category = $settings['post_category'];
         $post_count = $settings['post_count'];
         $see_more_text = $settings['see_more_text']; // Get custom See More text
+        $exclude_child_categories = $settings['exclude_child_categories'];
 
         // Unique ID for the widget instance
         $widget_id = $this->get_id();
@@ -90,6 +117,7 @@ class Elementor_Category_Carousel_Widget extends \Elementor\Widget_Base {
         $args = [
             'category_name'  => $category,
             'posts_per_page' => $post_count,
+            'category__not_in' => $exclude_child_categories, // Exclude selected child categories
         ];
 
         $query = new WP_Query( $args );

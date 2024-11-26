@@ -154,7 +154,7 @@ class Elementor_Category_Carousel_Widget extends \Elementor\Widget_Base {
                                         <img src="<?php echo esc_url( get_the_post_thumbnail_url( get_the_ID(), 'full' ) ); ?>" alt="<?php echo esc_attr( get_the_title() ); ?>" />
                                     <?php else : ?>
                                         <!-- Fallback image if the post does not have a thumbnail -->
-                                        <img src="<?php echo esc_url( get_stylesheet_directory_uri() . '/assets/img/default-image.jpg' ); ?>" alt="<?php echo esc_attr( get_the_title() ); ?>" />
+                                        <img src="<?php echo esc_url( get_stylesheet_directory_uri() . '/img/post-thumb.webp' ); ?>" alt="<?php echo esc_attr( get_the_title() ); ?>" />
                                     <?php endif; ?>
                                 </a>
                                 <h3><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
